@@ -1,7 +1,5 @@
 package com.movie.app.controller;
 
-import java.util.List;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,13 +24,14 @@ public class movieDB {
 
     
 	@GetMapping("/{movieId}")
-	public List<MovieDb> getMovieInfoDB(@PathVariable("movieId") Integer movieId) {
+	public MovieDb getMovieInfoDB(@PathVariable("movieId") Integer movieId) {
 
-        LOG.info("Fetch Popular Movies...");
+        LOG.info("Detail of the movie in api bd...");
 
 		TmdbMovies movies = new TmdbApi("<apikey>").getMovies();
+
 		MovieDb movie = movies.getMovie(movieId, "en");
 
-        return (List<MovieDb>) movie;
+        return movie;
 	}
 }
