@@ -1,6 +1,5 @@
 package com.movie.app.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,13 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.movie.app.Model.Genres;
 import com.movie.app.Model.Languages;
@@ -32,17 +29,6 @@ public class MoviesController {
 
 	@Autowired
 	private MoviesService moviesService;
-
-	@GetMapping("/all")
-    public List<Object> getMovies() {
-        String url = "";
-
-        RestTemplate restTemplate  = new RestTemplate();
-
-        Object[] movies = restTemplate.getForObject(url, Object[].class);
-
-        return Arrays.asList(movies);
-    }
 
 	@RequestMapping(value = "/languages", method = RequestMethod.GET)
 	public List<Languages> getAllLanguages() {

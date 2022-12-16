@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.9.RELEASE</version>
+		<version>2.7.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.larangogon</groupId>
@@ -24,7 +24,9 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
+		<!--~~(org.springframework.data.build:spring-data-parent:2.3.9.RELEASE failed. Unable to download POM. Tried repositories:
+https://repo.spring.io/libs-release: java.net.SocketTimeoutException: Connect timed out
+https://repo.maven.apache.org/maven2: java.net.SocketTimeoutException: Connect timed out)~~>--><dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -57,6 +59,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.holgerbrandl</groupId>
+			<artifactId>themoviedbapi</artifactId>
+			<version>1.12</version>
 		</dependency>
 	</dependencies>
 
