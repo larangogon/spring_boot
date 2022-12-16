@@ -6,11 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.movie.reviews.Model.UserEntity;
 import com.movie.reviews.authentication.TokenAuthenticationService;
 import com.movie.reviews.repository.UserRepository;
-
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import at.favre.lib.crypto.bcrypt.BCrypt.Result;
 
@@ -24,6 +22,7 @@ public class UserService {
 
 	public String signUp(UserEntity user) {
 		String status = "Existing User... Please Login !!!";
+
 		List<UserEntity> list = userRepository.fetchUserByEmailId(user.getEmailId());
 
 		if (list.isEmpty()) {
@@ -42,5 +41,4 @@ public class UserService {
 	private String hashPassword(String password) {
 		return BCrypt.withDefaults().hashToString(12, password.toCharArray());
 	}
-
 }

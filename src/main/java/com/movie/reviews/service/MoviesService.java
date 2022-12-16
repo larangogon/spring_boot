@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.movie.reviews.Model.Genres;
 import com.movie.reviews.Model.Languages;
 import com.movie.reviews.Model.Movies;
@@ -53,7 +52,9 @@ public class MoviesService {
 
 	public List<Movies> getAllMovies() {
 		List<Movies> list = (List<Movies>) moviesRepository.findAll();
+
 		updateLanguageGenres(list);
+		
 		return list;
 	}
 
@@ -67,12 +68,15 @@ public class MoviesService {
 	public List<Movies> getMovieInfo(Integer movieId) {
 
 		Optional<Movies> movieOptional = moviesRepository.findById(movieId);
+
 		Movies movie = movieOptional.get();
 
 		List<Reviews> reviews = reviewRepository.fetchReviewByMovieId(movie.getId());
+
 		movie.setReviews(reviews);
 
 		List<Movies> list = Arrays.asList(new Movies[] { movie });
+
 		updateLanguageGenres(list);
 
 		return list;
@@ -80,12 +84,15 @@ public class MoviesService {
 
 	private void updateLanguageGenres(List<Movies> list) {
 		Map<Integer, String> languageMap = new HashMap<>();
+
 		Map<Integer, String> genreMap = new HashMap<>();
 
 		List<Languages> languageList = getAllLanguages();
+
 		languageList.parallelStream().forEach(obj -> languageMap.put(obj.getId(), obj.getName()));
 
 		List<Genres> genreList = getAllGenres();
+
 		genreList.parallelStream().forEach(obj -> genreMap.put(obj.getId(), obj.getName()));
 
 		list.parallelStream().forEach(obj -> {
@@ -97,14 +104,20 @@ public class MoviesService {
 
 	public void addReview(Reviews reviews) {
 		reviews.setCreateTimestamp(new Date());
+
 		reviewRepository.save(reviews);
+
 		Ratings ratings = null;
+
 		List<Ratings> ratingList = ratingsRepository.fetchRatingByMovieId(reviews.getMovieId());
+
 		if (!ratingList.isEmpty()) {
 			LOG.info("Update existing ratings...");
+
 			ratings = ratingList.get(0);
 		} else {
 			LOG.info("Add a new ratings...");
+
 			ratings = new Ratings(reviews.getMovieId(), 0, 0, (double) 0, 0, new Date());
 		}
 
@@ -113,7 +126,9 @@ public class MoviesService {
 		} else {
 			ratings.setDislike(ratings.getDislike() + 1);
 		}
+
 		ratings.setTotalRatings(ratings.getTotalRatings() + 1);
+
 		ratingsRepository.save(ratings);
 	}
 
