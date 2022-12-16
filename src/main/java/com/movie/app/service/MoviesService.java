@@ -10,13 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.movie.app.Model.Genres;
 import com.movie.app.Model.Languages;
 import com.movie.app.Model.Movies;
 import com.movie.app.Model.Ratings;
 import com.movie.app.Model.Reviews;
-import com.movie.app.controller.MoviesController;
 import com.movie.app.repository.GenreRepository;
 import com.movie.app.repository.LanguageRepository;
 import com.movie.app.repository.MoviesRepository;
@@ -132,5 +130,4 @@ public class MoviesService {
 
 		ratingsRepository.save(ratings);
 	}
-
 }
