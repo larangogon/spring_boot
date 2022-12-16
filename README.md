@@ -1,4 +1,4 @@
-# themoviedb-testing
+# The movie db integration-testing
 
 ### Descripcion:
 
@@ -25,3 +25,4 @@
 
  7. El proyecto se despliega en AWS.
 
+ 8. la autenticacion se realiza con jwt
