@@ -1,9 +1,8 @@
-# The movie db integration-testing
+# Testing
 
 ### Descripcion:
 
-1. Utilizando JAVA y spring boot se realiza el consumo de los servicios del api "The Movie database"
-["The Movie database"](https://www.themoviedb.org/documentation/api)
+1. Utilizando JAVA y spring boot
 
  2. Desde nuestra api se expone la siguiente informacion.
 
@@ -23,6 +22,4 @@
 
  5. Se pagina la informacion listada.
 
- 7. El proyecto se despliega en AWS.
-
- 8. La autenticacion se realiza con jwt
+6. La autenticacion se realiza con jwt
