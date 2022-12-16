@@ -19,10 +19,10 @@
 
  3. Los usuarios pueden loguearse en nuestra api, y el admin puede realizar gestion sobre la informacion.
 
- 4. se estandarizan respuestas http y formato de logs.
+ 4. Se estandarizan respuestas http y formato de logs.
 
- 5. se pagina la informacion listada.
+ 5. Se pagina la informacion listada.
 
  7. El proyecto se despliega en AWS.
 
- 8. la autenticacion se realiza con jwt
+ 8. La autenticacion se realiza con jwt
