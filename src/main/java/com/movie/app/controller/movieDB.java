@@ -22,7 +22,6 @@ public class movieDB {
 
     //https://api.themoviedb.org/3/movie/550?api_key=cad0d95925c6869c60ed49f550af6c90
 
-    
 	@GetMapping("/{movieId}")
 	public MovieDb getMovieInfoDB(@PathVariable("movieId") Integer movieId) {
 
