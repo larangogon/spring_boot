@@ -10,8 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbLists;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 
 @CrossOrigin
 @RestController
@@ -21,7 +23,7 @@ public class movieDB {
     private static final Logger LOG = LoggerFactory.getLogger(MoviesController.class);
 
     //https://api.themoviedb.org/3/movie/550?api_key=cad0d95925c6869c60ed49f550af6c90
-
+	//buscando pelicula por id
 	@GetMapping("/{movieId}")
 	public MovieDb getMovieInfoDB(@PathVariable("movieId") Integer movieId) {
 
@@ -30,6 +32,19 @@ public class movieDB {
 		TmdbMovies movies = new TmdbApi("<apikey>").getMovies();
 
 		MovieDb movie = movies.getMovie(movieId, "en");
+
+        return movie;
+	}
+
+	//https://api.themoviedb.org/3/movie/popular?api_key=cad0d95925c6869c60ed49f550af6c90
+	//populares
+	@GetMapping("/getAllMovies")
+	public MovieResultsPage getAllMovies() {
+		LOG.info("All the movies in api bd...");
+
+		TmdbMovies movies = new TmdbApi("<apikey>").getMovies();
+
+		MovieResultsPage movie = movies.getPopularMovies(null, null);
 
         return movie;
 	}
